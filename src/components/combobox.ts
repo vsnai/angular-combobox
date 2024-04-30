@@ -13,7 +13,7 @@ import {
   effect,
   signal,
 } from '@angular/core'
-import { Country } from './app.component'
+import { Country } from './app'
 
 const countries = [
   { id: 'at', value: 'Austria' },
@@ -50,7 +50,7 @@ const countries = [
 ]
 
 @Component({
-  selector: 'combobox-component',
+  selector: 'vsn-combobox',
   standalone: true,
   imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -133,7 +133,7 @@ const countries = [
     </div>
   `,
 })
-export class ComboboxComponent implements OnInit, OnDestroy {
+export class Combobox implements OnInit, OnDestroy {
   search = signal('')
   isOpen = signal(false)
   hoveredIndex = signal(0)

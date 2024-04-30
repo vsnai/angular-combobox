@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
-import { ComboboxComponent } from './combobox.component'
+import { Combobox } from './combobox'
 
 export type Country = {
   id: string
@@ -8,13 +8,13 @@ export type Country = {
 }
 
 @Component({
-  selector: 'app-root',
+  selector: 'vsn-app',
   standalone: true,
-  imports: [RouterOutlet, ComboboxComponent],
+  imports: [RouterOutlet, Combobox],
   template: `
     <main class="p-10">
       <form class="flex space-x-4" (ngSubmit)="onSubmit($event)">
-        <combobox-component (onResultChange)="onResultChange($event)" />
+        <vsn-combobox (onResultChange)="onResultChange($event)" />
 
         <button
           class="h-10 bg-gray-300 px-4"
@@ -29,7 +29,7 @@ export type Country = {
     </main>
   `,
 })
-export class AppComponent {
+export class App {
   result = signal<Country | undefined>(undefined)
 
   onResultChange(country: Country | undefined) {
