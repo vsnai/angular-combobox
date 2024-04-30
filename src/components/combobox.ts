@@ -58,6 +58,7 @@ const countries = [
     <div class="relative flex items-center">
       <input
         class="h-10 w-64 rounded-md border-gray-300 pl-4 pr-10 text-sm transition duration-150 placeholder:text-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-300"
+        placeholder="Filter by country"
         [value]="search()"
         (input)="onInputChange($event)"
         (focus)="onFocus()"
@@ -262,6 +263,12 @@ export class Combobox implements OnInit, OnDestroy {
   }
 
   onTabKey() {
-    this.isOpen.set(false)
+    if (this.filteredCountries().length > 0) {
+      const country = this.filteredCountries()[this.hoveredIndex()]
+
+      this.result.set(country)
+      this.search.set(country.value)
+      this.isOpen.set(false)
+    }
   }
 }

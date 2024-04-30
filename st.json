@@ -1,0 +1,35 @@
+{
+  "breadcrumbs.enabled": false,
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "'Berkeley Mono', 'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "editor.glyphMargin": false,
+  "editor.guides.indentation": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineNumbers": "off",
+  "editor.minimap.enabled": false,
+  "editor.overviewRulerBorder": false,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.tabSize": 2,
+
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.fontSize": 13,
+
+  "window.commandCenter": false,
+  "window.newWindowDimensions": "inherit",
+
+  "workbench.activityBar.location": "hidden",
+  "workbench.colorTheme": "Rosé Pine (no italics)",
+  "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.iconTheme": null,
+  "workbench.layoutControl.enabled": false,
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.visible": false
+}
