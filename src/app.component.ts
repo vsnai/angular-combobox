@@ -14,9 +14,13 @@ export type Country = {
   template: `
     <main class="p-10">
       <form class="flex space-x-4" (ngSubmit)="onSubmit($event)">
-        <combobox-component (fooChange)="onFooChange($event)" />
+        <combobox-component (onResultChange)="onResultChange($event)" />
 
-        <button class="h-10 bg-gray-300 px-4" (click)="onFilter($event)">
+        <button
+          class="h-10 bg-gray-300 px-4"
+          [disabled]="result() === undefined"
+          (click)="onFilter($event)"
+        >
           Filter
         </button>
       </form>
@@ -26,16 +30,16 @@ export type Country = {
   `,
 })
 export class AppComponent {
-  foo = signal<Country | undefined>(undefined)
+  result = signal<Country | undefined>(undefined)
 
-  onFooChange(country: Country | undefined) {
-    this.foo.set(country)
+  onResultChange(country: Country | undefined) {
+    this.result.set(country)
   }
 
   onFilter(event: Event) {
     event.preventDefault()
 
-    console.log(this.foo())
+    console.log(this.result())
   }
 
   onSubmit(event: Event) {

@@ -109,7 +109,7 @@ const countries = [
             let i = $index
           ) {
             <button
-              #itemRef
+              #ref
               tabindex="-1"
               class="flex w-full items-center rounded p-2 hover:bg-gray-300"
               [ngClass]="{ 'bg-gray-200': hoveredIndex() === i }"
@@ -150,13 +150,13 @@ export class ComboboxComponent implements OnInit, OnDestroy {
     })
   })
 
-  @Output() fooChange = new EventEmitter<Country | undefined>()
+  @ViewChildren('ref') refs!: QueryList<ElementRef>
 
-  @ViewChildren('itemRef') itemRefs!: QueryList<ElementRef>
+  @Output() onResultChange = new EventEmitter<Country | undefined>()
 
   constructor(private elementRef: ElementRef) {
     effect(() => {
-      this.fooChange.emit(this.result())
+      this.onResultChange.emit(this.result())
     })
   }
 
@@ -229,11 +229,10 @@ export class ComboboxComponent implements OnInit, OnDestroy {
   }
 
   scrollToItem() {
-    const elements = this.itemRefs.toArray()
+    const el = this.refs.toArray()[this.hoveredIndex()]
 
-    if (elements[this.hoveredIndex()]) {
-      elements[this.hoveredIndex()].nativeElement.scrollIntoView({
-        behavior: 'instant',
+    if (el) {
+      el.nativeElement.scrollIntoView({
         block: 'center',
       })
     }
